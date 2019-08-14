@@ -1,7 +1,6 @@
-# sse_seg: semi-supervised segmentation by deep learning 
-
-This repository is created to support our submission to ICLR "SeSe-Net: Semi-supervised Segmentation Deep
-Neural Networks"
+# SeSe_Net: semi-supervised segmentation by deep learning 
+# by Zeng Zeng, Yang Xulei, Yu Qiyun, Yao Meng, Zhang Le, 
+# Pattern Recognition Letter
 
 
 To repeat the results in the paper: 
