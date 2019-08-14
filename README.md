@@ -1,6 +1,8 @@
 #SeSe_Net: semi-supervised segmentation by deep learning 
+
 #by Zeng Zeng, Yang Xulei, Yu Qiyun, Yao Meng, Zhang Le, 
-#Pattern Recognition Letter
+
+#Pattern Recognition Letter, Aug. 2019
 
 
 To repeat the results in the paper: 
