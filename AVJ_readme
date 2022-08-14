@@ -1,0 +1,37 @@
+source activate tracking 
+
+#########pre-processing##############
+
+1) rename the avi and related lat&sep, add prefix to avoid the cases that patient id is identical in various folders
+for file in * ; do mv -- "$file" "prefix_$file" ; done
+rename 's/infrared/rgb/' *.jpg 
+
+2) split data to training and testing, pre make dir of folders ./data/training and ./data/testing (as well as ./data/training/frames/ ./data/testing/frames for next step)
+python AVJ_Split.py
+
+3) pre-process training and testing dataset to fit into regression model, i.e., point coordinates and frame extraction
+python Preprocess.py
+
+4) run the training and testing by the following readme
+
+######### training and testing ###############
+cd exp_234ch/128/
+Dependency:
+	keras == 1.2.2
+        Tensorflow-gpu == 1.14.0
+
+How to train: #python main_point.py
+	1) from scratch:  train_model('../21/frames', '../21/S21_234ch.csv', 'saved_234ch.model')  # start from 1
+        2) from checkpoint:  train_model('../21/frames', '../21/S21_234ch.csv', 'saved_234ch.model', 'saved_1500.model', '1501')  #start from 1501
+        3) important parameters: INPUT_HEIGHT, INPUT_WEIGHT, rotation_range
+
+How to test: #python test_main_point.py
+        i = 15000 # epoch number  
+	predict('./saved_{}.model'.format(i), '../../22/frames', '../../22/S22_234ch.csv', 'pred_234.csv', True) # if True, save debug image, if False, dont save       
+
+
+training record:
+
+3375/3375 [==============================] - 7s - loss: 1.5687
+Epoch 19263/20001
+
